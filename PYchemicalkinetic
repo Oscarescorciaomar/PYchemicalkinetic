@@ -1,0 +1,104 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#####Code Author : Oscar M. Escorcia Omar #########
+
+#path = r'C:\Users\OSCAR\PycharmProjects\pythonProject2\\'
+
+data = pd.read_excel(r"/Users/OSCAR/PycharmProjects/pythonProject2/rate.xlsx")
+
+Molar = data['M']
+Tempo = data['T']
+
+Molarity = np.array(data['M'])
+
+Time = np.array(data['T'])
+
+Log = np.log(Molarity)
+
+#print(Log)
+
+Logarr = np.array(Log)
+
+#print(Logarr)
+
+#print(Molarity)
+
+#print(Time)
+
+###############Calculating for a first order reaction#################
+x = Time
+y = Logarr
+plt.plot(x, y)
+plt.axis([0,2000, -2.8, -2.3])
+plt.title( 'Change in concentration with respect to time - Firs Order')
+plt.xlabel('Time[s]')
+plt.ylabel('Concentration SO2Cl2[M]')
+plt.show()
+
+Valxy= ([Time], [Logarr])
+
+ValuesxyT = np.transpose(Valxy)
+
+#print(ValuesxyT)
+
+#Determination of Slope
+def slope(y2,y1,x2,x1):
+    m = (y2-y1)/(x2-x1)
+    return m
+#print(slope(-2.36,-2.30,200,0))
+
+#Determination of Intercept
+def intercept(y2,y1,x2,x1):
+    b = y1 - (((y2-y1)/(x2-x1))*x1)
+    return b
+#print(intercept(-2.36,-2.30,200,0))
+
+
+
+
+############Calculating for a second order reaction ##############
+C2nd = 1/Molar
+#print(C2nd)
+
+x = Time
+y = C2nd
+plt.plot(x, y)
+plt.axis([0,2000, 8, 15.50])
+plt.title( 'Change in concentration with respect to time - Second order')
+plt.xlabel('Time[s]')
+plt.ylabel('Concentration SO2Cl2[M]')
+#plt.show()
+
+#Determination of Slope
+def slope(y2,y1,x2,x1):
+    m= ((y2-y1)/(x2-x1))
+    return m
+#print(slope(10.59, 10 ,200,0))
+
+#Determination of intercept
+def intercept(y2,y1,x2,x1):
+    b = y1 - (((y2-y1)/(x2-x1))*x1)
+    return b
+#print(intercept(10.59, 10 ,200,0))
+
+
+
+
+########Calculating for a Zero order reaction##############
+Czero = Molar
+x = Time
+y = Czero
+plt.plot(x, y)
+plt.axis([0,2000,0.0647,0.100])
+plt.title( 'Change in concentration with respect to time - Order Zero')
+plt.xlabel('Time[s]')
+plt.ylabel('Concentration SO2Cl2[M]')
+#plt.show()
+
+#Determination of Slope
+def slope(y2,y1,x2,x1):
+    m = ((y2-y1)/(x2-x1))
+    return m
+#print(slope(0.0647,0.100,1500,0))
