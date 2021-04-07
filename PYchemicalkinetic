@@ -27,6 +27,12 @@ Logarr = np.array(Log)
 
 #print(Time)
 
+Valxy= ([Time], [Logarr])
+
+ValuesxyT = np.transpose(Valxy)
+
+#print(ValuesxyT)
+
 ###############Calculating for a first order reaction#################
 x = Time
 y = Logarr
@@ -36,12 +42,6 @@ plt.title( 'Change in concentration with respect to time - Firs Order')
 plt.xlabel('Time[s]')
 plt.ylabel('Concentration SO2Cl2[M]')
 plt.show()
-
-Valxy= ([Time], [Logarr])
-
-ValuesxyT = np.transpose(Valxy)
-
-#print(ValuesxyT)
 
 #Determination of Slope
 def slope(y2,y1,x2,x1):
@@ -82,8 +82,6 @@ def intercept(y2,y1,x2,x1):
     b = y1 - (((y2-y1)/(x2-x1))*x1)
     return b
 #print(intercept(10.59, 10 ,200,0))
-
-
 
 
 ########Calculating for a Zero order reaction##############
